@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="17253" started-at="2015-12-12T16:20:42Z" finished-at="2015-12-12T16:21:00Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="17253" started-at="2015-12-12T16:20:42Z" finished-at="2015-12-12T16:21:00Z">
+      <class name="com.example.tests.CreateGroup">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.example.tests.CreateGroup@3930015a]" name="setUp" is-config="true" duration-ms="11565" started-at="2015-12-12T18:20:42Z" finished-at="2015-12-12T18:20:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testEmptyTestCreation()[pri:0, instance:com.example.tests.CreateGroup@3930015a]" name="testEmptyTestCreation" duration-ms="2401" started-at="2015-12-12T18:20:54Z" finished-at="2015-12-12T18:20:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEmptyTestCreation -->
+        <test-method status="PASS" signature="testNonEmptyTestCreation()[pri:0, instance:com.example.tests.CreateGroup@3930015a]" name="testNonEmptyTestCreation" duration-ms="2473" started-at="2015-12-12T18:20:56Z" finished-at="2015-12-12T18:20:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNonEmptyTestCreation -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.example.tests.CreateGroup@3930015a]" name="tearDown" is-config="true" duration-ms="776" started-at="2015-12-12T18:20:59Z" finished-at="2015-12-12T18:21:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.example.tests.CreateGroup -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
