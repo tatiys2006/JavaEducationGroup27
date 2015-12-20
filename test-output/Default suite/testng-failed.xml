@@ -5,15 +5,14 @@
     <classes>
       <class name="com.example.tests.CreateGroup">
         <methods>
-          <include name="setUp"/>
-          <include name="tearDown"/>
+          <include name="testEmptyTestCreation"/>
+          <include name="testNonEmptyTestCreation"/>
         </methods>
       </class> <!-- com.example.tests.CreateGroup -->
       <class name="com.example.tests.CreateContact">
         <methods>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="testCreateEmptyContact"/>
         </methods>
       </class> <!-- com.example.tests.CreateContact -->
     </classes>
