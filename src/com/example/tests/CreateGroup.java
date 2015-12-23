@@ -3,6 +3,7 @@ package com.example.tests;
 import org.testng.annotations.Test;
 
 public class CreateGroup extends TestBase {
+	
 	@Test
 	public void testNonEmptyTestCreation() throws Exception {
 		app.getNavigationHelper().openMainPage();
@@ -14,7 +15,7 @@ public class CreateGroup extends TestBase {
 		group.footer = "Footer Takos";
 		app.getGroupHelper().fillGroupForm(group);
 		app.getGroupHelper().submitGroupForm();
-		app.getNavigationHelper().returnToGroupPage();
+		app.getGroupHelper().returnToGroupPage();
 	}
 
 	@Test
@@ -22,9 +23,9 @@ public class CreateGroup extends TestBase {
 		app.getNavigationHelper().openMainPage();
 		app.getNavigationHelper().gotoGroupPage();
 		app.getGroupHelper().initNewGroup();
-		GroupData group = new GroupData(" ", " ", " ");
+		GroupData group = new GroupData("", "", "");
 		app.getGroupHelper().fillGroupForm(group);
 		app.getGroupHelper().submitGroupForm();
-		app.getNavigationHelper().returnToGroupPage();
+		app.getGroupHelper().returnToGroupPage();
 	}
 }

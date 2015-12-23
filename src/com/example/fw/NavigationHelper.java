@@ -9,25 +9,18 @@ public class NavigationHelper extends HelperBase{
 			}
 
 	public void openMainPage() {
-		driver.get(manager.baseUrl + "/addressbookv4.1.4/");
+		driver.get(manager.baseUrl + "addressbookv4.1.4/");
 			}
 
 	public void gotoGroupPage() {
-		driver.findElement(By.linkText("groups")).click();
-			}
-
-	public void returnToGroupPage() {
-		driver.findElement(By.linkText("group page")).click();
+		click(By.linkText("groups"));
 			}
 	
 	public void returnToHomePage() {
-		driver.findElement(By.linkText("home page")).click();
+		click(By.linkText("home page"));
 			}
 	
 	public void openCreateContactPage() {
-		driver.findElement(By.linkText("add new")).click();
+		click(By.linkText("add new"));
 			}
-
-	
-
 }

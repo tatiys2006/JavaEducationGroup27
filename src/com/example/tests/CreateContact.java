@@ -9,7 +9,7 @@ public class CreateContact extends TestBase{
 		app.getNavigationHelper().openMainPage();
 		app.getNavigationHelper().openCreateContactPage();
 				
-		contactData contact = new contactData();
+		ContactData contact = new ContactData();
 		contact.firstname = "Takos";
 		contact.secondname = "Test";
 		contact.myAddress1 = "My address";
@@ -33,7 +33,7 @@ public class CreateContact extends TestBase{
 		app.getNavigationHelper().openMainPage();
 		app.getNavigationHelper().openCreateContactPage();
 				
-		contactData contact = new contactData();
+		ContactData contact = new ContactData();
 		contact.firstname = "";
 		contact.secondname = "";
 		contact.myAddress1 = "";
@@ -44,7 +44,7 @@ public class CreateContact extends TestBase{
 		contact.email2 = "";
 		contact.bdayDay = "-";
 		contact.bdayMonth = "-";
-		contact.bdayYear = "0";
+		contact.bdayYear = "";
 		contact.choosedGroup = "[none]";
 		contact.secondaryAddress = "";
 		contact.secondaryHome = "";
