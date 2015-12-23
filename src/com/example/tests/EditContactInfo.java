@@ -20,10 +20,10 @@ public class EditContactInfo extends TestBase{
 	@Test
 	public void modifySomeContact(){
 		app.getNavigationHelper().openMainPage();
-		app.getContactHelper().detailOfContact(6);
+		app.getContactHelper().detailOfContact(2);
 		app.getContactHelper().initModifySomeContact();
 		ContactData contact = new ContactData();
-		contact.firstname = "new firstname6 (Modify)";
+		contact.firstname = "new firstname2 (Modify)";
 		app.getContactHelper().fillContactForm(contact);
 		app.getContactHelper().updateContactForm();
 		app.getNavigationHelper().returnToHomePage();

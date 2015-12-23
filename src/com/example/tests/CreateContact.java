@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 public class CreateContact extends TestBase{
 	
 	@Test
-	public void testCreateNotEmptyContact() throws Exception {
+	public void testCreateNotEmptyContact()  throws Exception{
 		app.getNavigationHelper().openMainPage();
 		app.getNavigationHelper().openCreateContactPage();
 				
@@ -29,7 +29,7 @@ public class CreateContact extends TestBase{
 		app.getNavigationHelper().returnToHomePage();
 	}
 	@Test
-	public void testCreateEmptyContact() throws Exception {
+	public void testCreateEmptyContact() throws Exception{
 		app.getNavigationHelper().openMainPage();
 		app.getNavigationHelper().openCreateContactPage();
 				
