@@ -1,6 +1,11 @@
 package com.example.fw;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import com.example.tests.ContactData;
 
 public class ContactHelper extends HelperBase{
@@ -51,17 +56,45 @@ public class ContactHelper extends HelperBase{
 	
 	//select some contact
 	public void selectContactByIndex(int index) {
-		click(By.xpath(".//*[@id='maintable']/tbody/tr[ + index + ]/td[1]"));
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+1) + "]/td[1]"));
 			}
 
 	//icon "Edit"
 	public void initContactEdit(int index) {
-		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + index + "]/td[7]"));
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+1) + "]/td[7]"));
 			}
 		
 	//Icon "Detail"
 	public void detailOfContact(int index) {
-		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + index + "]/td[6]"));
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+1) + "]/td[6]"));
 		
 			}
+
+	public List<ContactData> getContact() {
+		List<ContactData> contacts = new ArrayList<ContactData>();
+		List<WebElement> rowsOfTable = driver.findElements(By.xpath("//table[@id='maintable']/tbody/tr[@name='entry']"));
+		for (WebElement rowOfTable : rowsOfTable) {
+			ContactData contact = new ContactData();
+			String title = rowOfTable.getAttribute("title");
+			contact.secondname = rowOfTable.findElement(By.xpath("td[2]")).getText();
+			contact.firstname = rowOfTable.findElement(By.xpath("td[3]")).getText();
+			//cut some symbols
+			contact.firstnameSecondname = title.substring("Select (".length(), title.length() - ")".length());
+			contacts.add(contact);
+		}
+		return contacts;
+		
+		
+		/*List<WebElement> rowsOfTable = driver.findElements(By.xpath("//table[@id='maintable']/tbody/tr[@name='entry']"));
+		for (WebElement rowOfTable : rowsOfTable) {
+			ContactData contact = new ContactData();
+			contact.secondname = rowOfTable.findElement(By.xpath("td[2]")).getText();
+			contact.firstname = rowOfTable.findElement(By.xpath("td[3]")).getText();
+			contact.email1 = rowOfTable.findElement(By.xpath("td[4]")).getText();
+			contact.telNumberHome = rowOfTable.findElement(By.xpath("td[5]")).getText();
+			
+			contacts.add(contact);
+		}
+		return contacts;*/
+	}
 }

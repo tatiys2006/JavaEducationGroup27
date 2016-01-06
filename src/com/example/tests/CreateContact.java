@@ -1,5 +1,10 @@
 package com.example.tests;
 
+import static org.testng.Assert.assertEquals;
+
+import java.util.Collections;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 public class CreateContact extends TestBase{
@@ -7,11 +12,16 @@ public class CreateContact extends TestBase{
 	@Test
 	public void testCreateNotEmptyContact()  throws Exception{
 		app.getNavigationHelper().openMainPage();
+		
+		//save old state
+		List<ContactData> oldListContact = app.getContactHelper().getContact();
+				
+		//actions
 		app.getNavigationHelper().openCreateContactPage();
 				
 		ContactData contact = new ContactData();
-		contact.firstname = "Takos";
-		contact.secondname = "Test";
+		contact.firstname = "New";
+		contact.secondname = "AAQ";
 		contact.myAddress1 = "My address";
 		contact.telNumberHome = "1";
 		contact.telNumberMobile = "2";
@@ -27,10 +37,27 @@ public class CreateContact extends TestBase{
 		app.getContactHelper().fillContactForm(contact);
 		app.getContactHelper().submitContactForm();
 		app.getNavigationHelper().returnToHomePage();
+		
+		//save new state
+		List<ContactData> newListContact = app.getContactHelper().getContact();
+				
+		//compare states = passed
+		//assertEquals(newList.size(), oldList.size() + 1);
+				
+		//second compare
+		oldListContact.add(contact);
+		Collections.sort(oldListContact);
+		assertEquals(newListContact, oldListContact);
 	}
+	
 	@Test
 	public void testCreateEmptyContact() throws Exception{
 		app.getNavigationHelper().openMainPage();
+		
+		//save old state
+		List<ContactData> oldListContact = app.getContactHelper().getContact();
+						
+		//actions
 		app.getNavigationHelper().openCreateContactPage();
 				
 		ContactData contact = new ContactData();
@@ -51,6 +78,14 @@ public class CreateContact extends TestBase{
 		app.getContactHelper().fillContactForm(contact);
 		app.getContactHelper().submitContactForm();
 		app.getNavigationHelper().returnToHomePage();
+		
+		//save new state
+		List<ContactData> newListContact = app.getContactHelper().getContact();
+						
+		//second compare
+		oldListContact.add(contact);
+		Collections.sort(oldListContact);
+		assertEquals(newListContact, oldListContact);
 	}
 	
 }

@@ -3,9 +3,11 @@ package com.example.tests;
 public class GroupData implements Comparable<GroupData>{
 	
 	
+	
+
 	@Override
 	public String toString() {
-		return "GroupData [groupName=" + groupName + "]";
+		return "GroupData [groupName=" + groupName + ", header=" + header + ", footer=" + footer + "]";
 	}
 
 	@Override
