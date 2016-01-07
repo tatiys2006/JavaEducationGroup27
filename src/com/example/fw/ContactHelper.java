@@ -3,6 +3,7 @@ package com.example.fw;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bouncycastle.crypto.tls.SRPTlsClient;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -72,29 +73,65 @@ public class ContactHelper extends HelperBase{
 
 	public List<ContactData> getContact() {
 		List<ContactData> contacts = new ArrayList<ContactData>();
-		List<WebElement> rowsOfTable = driver.findElements(By.xpath("//table[@id='maintable']/tbody/tr[@name='entry']"));
-		for (WebElement rowOfTable : rowsOfTable) {
-			ContactData contact = new ContactData();
-			String title = rowOfTable.getAttribute("title");
-			contact.secondname = rowOfTable.findElement(By.xpath("td[2]")).getText();
-			contact.firstname = rowOfTable.findElement(By.xpath("td[3]")).getText();
-			//cut some symbols
-			contact.firstnameSecondname = title.substring("Select (".length(), title.length() - ")".length());
-			contacts.add(contact);
+		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
+		int i = 2;
+		for (WebElement checkbox : checkboxes) {
+			
+			ContactData contactFromHomeTable = new ContactData();
+			contactFromHomeTable.secondname = driver.findElement(By.xpath("//table[@id='maintable']/tbody/tr["+i+"]/td[2]")).getText();
+			contactFromHomeTable.firstname = driver.findElement(By.xpath("//table[@id='maintable']/tbody/tr["+i+"]/td[3]")).getText();
+			this.controlOfData(contactFromHomeTable);
+			contactFromHomeTable.firstnameSecondname.trim();
+			contacts.add(contactFromHomeTable);
+			i ++;
 		}
 		return contacts;
-		
-		
-		/*List<WebElement> rowsOfTable = driver.findElements(By.xpath("//table[@id='maintable']/tbody/tr[@name='entry']"));
-		for (WebElement rowOfTable : rowsOfTable) {
-			ContactData contact = new ContactData();
-			contact.secondname = rowOfTable.findElement(By.xpath("td[2]")).getText();
-			contact.firstname = rowOfTable.findElement(By.xpath("td[3]")).getText();
-			contact.email1 = rowOfTable.findElement(By.xpath("td[4]")).getText();
-			contact.telNumberHome = rowOfTable.findElement(By.xpath("td[5]")).getText();
-			
-			contacts.add(contact);
-		}
-		return contacts;*/
 	}
+
+	public void setInfoFromContact(ContactData infoFormContact) {
+		infoFormContact.firstname = driver.findElement(By.name("firstname")).getAttribute("value");
+		infoFormContact.secondname = driver.findElement(By.name("lastname")).getAttribute("value");
+		infoFormContact.myAddress1 = driver.findElement(By.name("address")).getText();
+		infoFormContact.telNumberHome = driver.findElement(By.name("home")).getAttribute("value");
+		infoFormContact.telNumberMobile = driver.findElement(By.name("mobile")).getAttribute("value");
+		infoFormContact.telNumberWork = driver.findElement(By.name("work")).getAttribute("value");
+		infoFormContact.email1 = driver.findElement(By.name("email")).getAttribute("value");
+		infoFormContact.email2 = driver.findElement(By.name("email2")).getAttribute("value");
+		infoFormContact.bdayYear = driver.findElement(By.name("byear")).getAttribute("value");
+		infoFormContact.secondaryAddress = driver.findElement(By.name("address2")).getText();
+		infoFormContact.secondaryHome = driver.findElement(By.name("phone2")).getAttribute("value");
+		}
+
+	public void clearContactData(ContactData infoFormContact) {
+		infoFormContact.myAddress1 = null;
+		infoFormContact.telNumberHome = null;
+		infoFormContact.telNumberMobile = null;
+		infoFormContact.telNumberWork = null;
+		infoFormContact.email1 = null;
+		infoFormContact.email2 = null;
+		infoFormContact.bdayYear = null;
+		infoFormContact.secondaryAddress = null;
+		infoFormContact.secondaryHome = null;
+		
+	}
+
+	public void controlOfData(ContactData contact) {
+
+		if (contact.secondname != null & contact.firstname != null){
+			contact.firstnameSecondname = contact.secondname + "&" + contact.firstname;
+	
+		} else { if (contact.secondname != null & contact.firstname == null){
+			contact.firstnameSecondname = contact.secondname;
+			
+				} else { if (contact.secondname == null & contact.firstname != null){
+				contact.firstnameSecondname = contact.firstname;
+					} else {
+						contact.firstnameSecondname = "";
+						}
+				}
+		}
+		
+	}
+
+	
 }

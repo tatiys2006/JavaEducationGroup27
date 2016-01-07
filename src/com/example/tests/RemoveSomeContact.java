@@ -26,7 +26,7 @@ public class RemoveSomeContact extends TestBase{
 		List<ContactData> newListContact = app.getContactHelper().getContact();
 											
 		//second compare
-		oldListContact.remove(5);
+		oldListContact.remove(4);
 		Collections.sort(oldListContact);
 		assertEquals(newListContact, oldListContact);
 	}
@@ -47,7 +47,7 @@ public class RemoveSomeContact extends TestBase{
 		List<ContactData> newListContact = app.getContactHelper().getContact();
 													
 		//second compare
-		oldListContact.remove(3);
+		oldListContact.remove(2);
 		Collections.sort(oldListContact);
 		assertEquals(newListContact, oldListContact);
 }

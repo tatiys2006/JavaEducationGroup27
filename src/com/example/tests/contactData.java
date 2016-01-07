@@ -24,7 +24,7 @@ public class ContactData implements Comparable<ContactData> {
 	// Filled contact
 	public ContactData(String firstname, String secondname, String myAddress1, String telNumberHome,
 			String telNumberMobile, String telNumberWork, String email1, String email2, String bdayDay,
-			String bdayMonth, String bdayYear, String choosedGroup, String secondaryAddress, String secondaryHome) {
+			String bdayMonth, String bdayYear, String choosedGroup, String secondaryAddress, String secondaryHome, String firstnameSecondname) {
 		this.firstname = firstname;
 		this.secondname = secondname;
 		this.myAddress1 = myAddress1;
@@ -39,16 +39,14 @@ public class ContactData implements Comparable<ContactData> {
 		this.choosedGroup = choosedGroup;
 		this.secondaryAddress = secondaryAddress;
 		this.secondaryHome = secondaryHome;
+		this.firstnameSecondname = firstnameSecondname;
 	}
 
-	/*@Override
-	public String toString() {
-		return "ContactData [firstname=" + firstname + ", secondname=" + secondname + ", telNumberHome=" + telNumberHome
-				+ ", email1=" + email1 + "]";
-	}*/
+	
 	@Override
 	public String toString() {
-		return "ContactData [firstnameSecondname=" + firstnameSecondname + "]";
+//		return "ContactData [firstnameSecondname=" + firstnameSecondname + "]";
+		return firstnameSecondname;
 	}
 
 	@Override
@@ -107,35 +105,6 @@ public class ContactData implements Comparable<ContactData> {
 		return this.firstnameSecondname.toLowerCase().compareTo(other.firstnameSecondname.toLowerCase());
 			}
 	
-		/* int tempCond = 0;
-		String tmpSecondname = this.secondname == null ? "" : this.secondname;
-		String tmpFirstname = this.firstname == null ? "" : this.firstname;
-		String tmpOldSecondname = other.secondname == null ? "" : other.secondname;
-		String tmpOldFirstname = other.firstname == null ? "" : other.firstname;
-
-		tempCond = tmpSecondname.compareTo(tmpOldSecondname.toLowerCase());
-
-		if (tempCond == 0) {
-			return tmpFirstname.toLowerCase().compareTo(tmpOldFirstname.toLowerCase());
-		} else return tempCond;
-		
-	} */
-	
-	 
-	/*  public int compareTo(ContactData other) {
-		String thisSecondname = this.secondname == null ? "" : this.secondname;
-		String changedSecondname = other.secondname == null ? "" : other.secondname;
-		int comparedSecondname = thisSecondname.toLowerCase().compareTo(changedSecondname.toLowerCase());
-		
-		if (comparedSecondname != 0) {
-			return comparedSecondname;
-		} else {
-			String thisFirstName = this.firstname == null ? "" : this.firstname;
-			String thatFirstName = other.firstname == null ? "" : other.firstname;
-			return thisFirstName.toLowerCase().compareTo(thatFirstName.toLowerCase());
-		} }
-		*/
-		
 	}
 
 

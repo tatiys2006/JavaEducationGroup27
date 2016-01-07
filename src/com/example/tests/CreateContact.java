@@ -35,6 +35,8 @@ public class CreateContact extends TestBase{
 		contact.secondaryAddress = "secondary address";
 		contact.secondaryHome = "Secondary home 4";
 		app.getContactHelper().fillContactForm(contact);
+		app.getContactHelper().controlOfData(contact);
+		app.getContactHelper().clearContactData(contact);
 		app.getContactHelper().submitContactForm();
 		app.getNavigationHelper().returnToHomePage();
 		
@@ -75,7 +77,10 @@ public class CreateContact extends TestBase{
 		contact.choosedGroup = "[none]";
 		contact.secondaryAddress = "";
 		contact.secondaryHome = "";
+		contact.firstnameSecondname = "&";
 		app.getContactHelper().fillContactForm(contact);
+		app.getContactHelper().controlOfData(contact);
+		app.getContactHelper().clearContactData(contact);
 		app.getContactHelper().submitContactForm();
 		app.getNavigationHelper().returnToHomePage();
 		
