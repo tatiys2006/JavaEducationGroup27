@@ -4,21 +4,28 @@ import static org.testng.Assert.assertEquals;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import org.testng.annotations.Test;
 
 public class RemoveSomeContact extends TestBase{
 	
 	//Edit-> Remove
-	@Test
-	public void deleteSomeContactFromEditPage(){
+	@Test(dataProvider = "randomValidContactGenerator")
+	public void deleteSomeContactFromEditPage(ContactData contact){
 		app.getNavigationHelper().openMainPage();
 		
 		//save old state
 		List<ContactData> oldListContact = app.getContactHelper().getContact();
+		
+		Random rnd = new Random();
+		int index = rnd.nextInt(oldListContact.size()-1);
+		if (index == 0){
+			index = 1;
+		}
 										
 		//actions
-		app.getContactHelper().initContactEdit(5);
+		app.getContactHelper().initContactEdit(index);
 		app.getContactHelper().deleteSomeContact();
 		app.getNavigationHelper().returnToHomePage();
 		
@@ -26,20 +33,26 @@ public class RemoveSomeContact extends TestBase{
 		List<ContactData> newListContact = app.getContactHelper().getContact();
 											
 		//second compare
-		oldListContact.remove(4);
+		oldListContact.remove(index-1);
 		Collections.sort(oldListContact);
 		assertEquals(newListContact, oldListContact);
 	}
 	
 	//Details->Modify->Remove
-	@Test
-	public void deleteSomeContactFromModifyAndEditPage(){
+	@Test(dataProvider = "randomValidContactGenerator")
+	public void deleteSomeContactFromModifyAndEditPage(ContactData contact){
 		app.getNavigationHelper().openMainPage();
 		//save old state
 		List<ContactData> oldListContact = app.getContactHelper().getContact();
+		
+		Random rnd = new Random();
+		int index = rnd.nextInt(oldListContact.size()-1);
+		if (index == 0){
+			index = 1;
+		}
 												
 		//actions
-		app.getContactHelper().detailOfContact(3);
+		app.getContactHelper().detailOfContact(index);
 		app.getContactHelper().initModifySomeContact();
 		app.getContactHelper().deleteSomeContact();
 		app.getNavigationHelper().returnToHomePage();
@@ -47,7 +60,7 @@ public class RemoveSomeContact extends TestBase{
 		List<ContactData> newListContact = app.getContactHelper().getContact();
 													
 		//second compare
-		oldListContact.remove(2);
+		oldListContact.remove(index-1);
 		Collections.sort(oldListContact);
 		assertEquals(newListContact, oldListContact);
 }

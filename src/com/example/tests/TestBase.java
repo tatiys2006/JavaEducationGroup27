@@ -43,6 +43,34 @@ public class TestBase {
 		return list.iterator();
 	}
 	
+	@DataProvider
+	public Iterator<Object[]> randomValidContactGenerator() {
+		//список наборов обьектов
+		List<Object[]> list = new ArrayList<Object[]>();
+		
+		//qty of contacts
+		for (int i = 0; i < 4; i++ ){
+			ContactData contact = new ContactData();
+			contact.firstname = generateRandomString();
+			contact.secondname = generateRandomString();
+			contact.myAddress1 = "My address";
+			contact.telNumberHome = "1";
+			contact.telNumberMobile = "2";
+			contact.telNumberWork = "3";
+			contact.email1 = "t@test.com";
+			contact.email2 = "t2@test.com";
+			contact.bdayDay = "2";
+			contact.bdayMonth = "February";
+			contact.bdayYear = "1900";
+			contact.choosedGroup = "TakosGroup";
+			contact.secondaryAddress = "secondary address";
+			contact.secondaryHome = "Secondary home 4";
+			
+			list.add(new Object[]{contact});
+		}
+		return list.iterator();
+	}
+	
 	public String generateRandomString(){
 		Random rnd = new Random();
 		//каждое 3 будет оставаться пустым
