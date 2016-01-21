@@ -26,45 +26,44 @@ public class TestBase {
 		app.stop();
 			}
 	
+	//options for generate random value to some fields for GROUP
 	@DataProvider
 	public Iterator<Object[]> randomValidGroupGenerator() {
-		//список наборов обьектов
 		List<Object[]> list = new ArrayList<Object[]>();
 		
-		//создаем 5 новых групп
+		//qty of groups, that will changed
 		for (int i = 0; i < 5; i++ ){
-			GroupData group = new GroupData();
-			group.groupName = generateRandomString();
-			group.header = generateRandomString();
-			group.footer = generateRandomString();	
-			
-			list.add(new Object[]{group});
+			GroupData group = new GroupData()
+					.withGroupName(generateRandomString())
+					.withHeader(generateRandomString())
+					.withFooter(generateRandomString());
+				list.add(new Object[]{group});
 		}
 		return list.iterator();
 	}
 	
+	//options for generate random value to some fields for CONTACT
 	@DataProvider
 	public Iterator<Object[]> randomValidContactGenerator() {
-		//список наборов обьектов
 		List<Object[]> list = new ArrayList<Object[]>();
 		
-		//qty of contacts
+		//qty of contacts, that will changed
 		for (int i = 0; i < 4; i++ ){
-			ContactData contact = new ContactData();
-			contact.firstname = generateRandomString();
-			contact.secondname = generateRandomString();
-			contact.myAddress1 = "My address";
-			contact.telNumberHome = "1";
-			contact.telNumberMobile = "2";
-			contact.telNumberWork = "3";
-			contact.email1 = "t@test.com";
-			contact.email2 = "t2@test.com";
-			contact.bdayDay = "2";
-			contact.bdayMonth = "February";
-			contact.bdayYear = "1900";
-			contact.choosedGroup = "TakosGroup";
-			contact.secondaryAddress = "secondary address";
-			contact.secondaryHome = "Secondary home 4";
+			ContactData contact = new ContactData()
+				.withFirstname(generateRandomString())
+				.withSecondname(generateRandomString())
+				.withMyAddress1("My address")
+				.withTelNumberHome("1")
+				.withTelNumberMobile("2")
+				.withTelNumberWork("3")
+				.withEmail1("t@test.com")
+				.withEmail2("t2@test.com")
+				.withBdayDay("2")
+				.withBdayMonth("February")
+				.withBdayYear("1900")
+				.withChoosedGroup("TakosGroup")
+				.withSecondaryAddress("secondary address")
+				.withSecondaryHome("Secondary home 4");
 			
 			list.add(new Object[]{contact});
 		}
@@ -73,11 +72,11 @@ public class TestBase {
 	
 	public String generateRandomString(){
 		Random rnd = new Random();
-		//каждое 3 будет оставатьс€ пустым
+		//the 3rd field will empty
 		if (rnd.nextInt(3) == 0) {
 			return "";	
 		} else {
-			//добавл€ем к имени случайное число
+			//add to text random value
 			return "test" + rnd.nextInt();
 		}
 	}

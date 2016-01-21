@@ -7,23 +7,21 @@ import java.util.List;
 
 import org.testng.annotations.Test;
 
+import static com.example.fw.ContactHelper.CREATION;
+
 public class CreateContact extends TestBase{
 	
 	@Test(dataProvider = "randomValidContactGenerator")
 	public void testCreateValidContact(ContactData contact)  throws Exception{
-		app.getNavigationHelper().openMainPage();
+		app.navigateTo().mainPage();
 		
 		//save old state
 		List<ContactData> oldListContact = app.getContactHelper().getContact();
 				
 		//actions
-		app.getNavigationHelper().openCreateContactPage();
-		app.getContactHelper().fillContactForm(contact);
-		app.getContactHelper().controlOfData(contact);
-		app.getContactHelper().clearContactData(contact);
-		app.getContactHelper().submitContactForm();
-		app.getNavigationHelper().returnToHomePage();
+		app.getContactHelper().createContact(contact);
 		
+				
 		//save new state
 		List<ContactData> newListContact = app.getContactHelper().getContact();
 				

@@ -21,6 +21,7 @@ public class ApplicationManager {
 			//driver = new ChromeDriver();
 			baseUrl = "http://localhost/";
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver.get(baseUrl + "addressbookv4.1.4/");
 			
 			//navigationHelper = new NavigaionHelper(this);
 			//groupHelper = new GroupHeplper(this);
@@ -33,7 +34,7 @@ public class ApplicationManager {
 			}
 	
 		
-		public NavigationHelper getNavigationHelper(){
+		public NavigationHelper navigateTo(){
 			if (navigationHelper == null){
 				navigationHelper = new NavigationHelper(this);
 			} return navigationHelper;

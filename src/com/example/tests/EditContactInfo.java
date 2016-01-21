@@ -13,7 +13,7 @@ public class EditContactInfo extends TestBase{
 	//with "Edit" icon
 	@Test(dataProvider = "randomValidContactGenerator")
 	public void editSomeContact(ContactData contact){
-		app.getNavigationHelper().openMainPage();
+		app.navigateTo().mainPage();
 		
 		//save old state
 		List<ContactData> oldListContact = app.getContactHelper().getContact();
@@ -25,12 +25,8 @@ public class EditContactInfo extends TestBase{
 		}
 						
 		//actions
-		app.getContactHelper().initContactEdit(index);
-		app.getContactHelper().fillContactForm(contact);
-		app.getContactHelper().controlOfData(contact);
-		app.getContactHelper().clearContactData(contact);
-		app.getContactHelper().updateContactForm();
-		app.getNavigationHelper().returnToHomePage();
+		app.getContactHelper().editContactUseEditButton(contact, index);
+		
 		
 		//save new state
 		List<ContactData> newListContact = app.getContactHelper().getContact();
@@ -45,7 +41,7 @@ public class EditContactInfo extends TestBase{
 	//через просмотр и модификацию
 	@Test(dataProvider = "randomValidContactGenerator")
 	public void modifySomeContact(ContactData contact){
-		app.getNavigationHelper().openMainPage();
+		app.navigateTo().mainPage();
 		//save old state
 		List<ContactData> oldListContact = app.getContactHelper().getContact();
 		
@@ -56,13 +52,8 @@ public class EditContactInfo extends TestBase{
 		}
 								
 		//actions
-		app.getContactHelper().detailOfContact(index);
-		app.getContactHelper().initModifySomeContact();
-		app.getContactHelper().fillContactForm(contact);
-		app.getContactHelper().controlOfData(contact);
-		app.getContactHelper().clearContactData(contact);
-		app.getContactHelper().updateContactForm();
-		app.getNavigationHelper().returnToHomePage();
+		app.getContactHelper().editContactUseModificationButton(contact, index);
+		
 		
 		//save new state
 		List<ContactData> newListContact = app.getContactHelper().getContact();

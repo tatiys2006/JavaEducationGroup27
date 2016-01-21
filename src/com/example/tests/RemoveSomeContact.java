@@ -13,7 +13,7 @@ public class RemoveSomeContact extends TestBase{
 	//Edit-> Remove
 	@Test(dataProvider = "randomValidContactGenerator")
 	public void deleteSomeContactFromEditPage(ContactData contact){
-		app.getNavigationHelper().openMainPage();
+		app.navigateTo().mainPage();
 		
 		//save old state
 		List<ContactData> oldListContact = app.getContactHelper().getContact();
@@ -25,9 +25,8 @@ public class RemoveSomeContact extends TestBase{
 		}
 										
 		//actions
-		app.getContactHelper().initContactEdit(index);
-		app.getContactHelper().deleteSomeContact();
-		app.getNavigationHelper().returnToHomePage();
+		app.getContactHelper().deleteContact(index);
+		
 		
 		//save new state
 		List<ContactData> newListContact = app.getContactHelper().getContact();
@@ -41,7 +40,7 @@ public class RemoveSomeContact extends TestBase{
 	//Details->Modify->Remove
 	@Test(dataProvider = "randomValidContactGenerator")
 	public void deleteSomeContactFromModifyAndEditPage(ContactData contact){
-		app.getNavigationHelper().openMainPage();
+		app.navigateTo().mainPage();
 		//save old state
 		List<ContactData> oldListContact = app.getContactHelper().getContact();
 		
@@ -52,10 +51,10 @@ public class RemoveSomeContact extends TestBase{
 		}
 												
 		//actions
-		app.getContactHelper().detailOfContact(index);
-		app.getContactHelper().initModifySomeContact();
-		app.getContactHelper().deleteSomeContact();
-		app.getNavigationHelper().returnToHomePage();
+		app.getContactHelper().detailOfContact(index)
+								.initModifySomeContact()
+								.deleteSomeContact()
+								.returnToHomePage();
 		//save new state
 		List<ContactData> newListContact = app.getContactHelper().getContact();
 													

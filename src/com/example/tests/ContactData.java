@@ -1,21 +1,21 @@
 package com.example.tests;
 
 public class ContactData implements Comparable<ContactData> {
-	public String firstname;
-	public String secondname;
-	public String myAddress1;
-	public String telNumberHome;
-	public String telNumberMobile;
-	public String telNumberWork;
-	public String email1;
-	public String email2;
-	public String bdayDay;
-	public String bdayMonth;
-	public String bdayYear;
-	public String choosedGroup;
-	public String secondaryAddress;
-	public String secondaryHome;
-	public String firstnameSecondname;
+	private String firstname;
+	private String secondname;
+	private String myAddress1;
+	private String telNumberHome;
+	private String telNumberMobile;
+	private String telNumberWork;
+	private String email1;
+	private String email2;
+	private String bdayDay;
+	private String bdayMonth;
+	private String bdayYear;
+	private String choosedGroup;
+	private String secondaryAddress;
+	private String secondaryHome;
+	private String firstnameSecondname;
 
 	// Empty Contact
 	public ContactData() {
@@ -25,7 +25,7 @@ public class ContactData implements Comparable<ContactData> {
 	public ContactData(String firstname, String secondname, String myAddress1, String telNumberHome,
 			String telNumberMobile, String telNumberWork, String email1, String email2, String bdayDay,
 			String bdayMonth, String bdayYear, String choosedGroup, String secondaryAddress, String secondaryHome, String firstnameSecondname) {
-		this.firstname = firstname;
+		this.setFirstname(firstname);
 		this.secondname = secondname;
 		this.myAddress1 = myAddress1;
 		this.telNumberHome = telNumberHome;
@@ -77,10 +77,10 @@ public class ContactData implements Comparable<ContactData> {
 				return false;
 		} else if (!email1.equals(other.email1))
 			return false;
-		if (firstname == null) {
-			if (other.firstname != null)
+		if (getFirstname() == null) {
+			if (other.getFirstname() != null)
 				return false;
-		} else if (!firstname.equals(other.firstname))
+		} else if (!getFirstname().equals(other.getFirstname()))
 			return false;
 		if (secondname == null) {
 			if (other.secondname != null)
@@ -105,7 +105,202 @@ public class ContactData implements Comparable<ContactData> {
 		return this.firstnameSecondname.toLowerCase().compareTo(other.firstnameSecondname.toLowerCase());
 			}
 	
+	//setters (not standard)
+	public ContactData withFirstname(String firstname) {
+		this.setFirstname(firstname);
+		return this;
 	}
+
+	public ContactData withSecondname(String secondname) {
+		this.secondname = secondname;
+		return this;
+	}
+
+	public ContactData withMyAddress1(String myAddress1) {
+		this.myAddress1 = myAddress1;
+		return this;
+	}
+
+	public ContactData withTelNumberHome(String telNumberHome) {
+		this.telNumberHome = telNumberHome;
+		return this;
+	}
+
+	public ContactData withTelNumberMobile(String telNumberMobile) {
+		this.telNumberMobile = telNumberMobile;
+		return this;
+	}
+
+	public ContactData withTelNumberWork(String telNumberWork) {
+		this.telNumberWork = telNumberWork;
+		return this;
+	}
+
+	public ContactData withEmail1(String email1) {
+		this.email1 = email1;
+		return this;
+	}
+	
+	public ContactData withEmail2(String email2) {
+		this.email2 = email2;
+		return this;
+	}
+
+	public ContactData withBdayDay(String bdayDay) {
+		this.bdayDay = bdayDay;
+		return this;
+	}
+
+	public ContactData withBdayMonth(String bdayMonth) {
+		this.bdayMonth = bdayMonth;
+		return this;
+	}
+
+	public ContactData withBdayYear(String bdayYear) {
+		this.bdayYear = bdayYear;
+		return this;
+	}
+
+	public ContactData withChoosedGroup(String choosedGroup) {
+		this.choosedGroup = choosedGroup;
+		return this;
+	}
+
+	public ContactData withSecondaryAddress(String secondaryAddress) {
+		this.secondaryAddress = secondaryAddress;
+		return this;
+	}
+
+	public ContactData withSecondaryHome(String secondaryHome) {
+		this.secondaryHome = secondaryHome;
+		return this;
+	}
+
+	//getters
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public String getSecondname() {
+		return secondname;
+	}
+
+	public String getMyAddress1() {
+		return myAddress1;
+	}
+
+	public String getTelNumberHome() {
+		return telNumberHome;
+	}
+
+	public String getTelNumberMobile() {
+		return telNumberMobile;
+	}
+
+	public String getTelNumberWork() {
+		return telNumberWork;
+	}
+
+	public String getEmail1() {
+		return email1;
+	}
+
+	public String getEmail2() {
+		return email2;
+	}
+
+	public String getBdayDay() {
+		return bdayDay;
+	}
+
+	public String getBdayMonth() {
+		return bdayMonth;
+	}
+
+	public String getBdayYear() {
+		return bdayYear;
+	}
+
+	public String getChoosedGroup() {
+		return choosedGroup;
+	}
+
+	public String getSecondaryAddress() {
+		return secondaryAddress;
+	}
+
+	public String getSecondaryHome() {
+		return secondaryHome;
+	}
+
+	public String getFirstnameSecondname() {
+		return firstnameSecondname;
+	}
+
+	//standard setters
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public void setSecondname(String secondname) {
+		this.secondname = secondname;
+	}
+
+	public void setMyAddress1(String myAddress1) {
+		this.myAddress1 = myAddress1;
+	}
+
+	public void setTelNumberHome(String telNumberHome) {
+		this.telNumberHome = telNumberHome;
+	}
+
+	public void setTelNumberMobile(String telNumberMobile) {
+		this.telNumberMobile = telNumberMobile;
+	}
+
+	public void setTelNumberWork(String telNumberWork) {
+		this.telNumberWork = telNumberWork;
+	}
+
+	public void setEmail1(String email1) {
+		this.email1 = email1;
+	}
+
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
+
+	public void setBdayDay(String bdayDay) {
+		this.bdayDay = bdayDay;
+	}
+
+	public void setBdayMonth(String bdayMonth) {
+		this.bdayMonth = bdayMonth;
+	}
+
+	public void setBdayYear(String bdayYear) {
+		this.bdayYear = bdayYear;
+	}
+
+	public void setChoosedGroup(String choosedGroup) {
+		this.choosedGroup = choosedGroup;
+	}
+
+	public void setSecondaryAddress(String secondaryAddress) {
+		this.secondaryAddress = secondaryAddress;
+	}
+
+	public void setSecondaryHome(String secondaryHome) {
+		this.secondaryHome = secondaryHome;
+	}
+
+	public void setFirstnameSecondname(String firstnameSecondname) {
+		this.firstnameSecondname = firstnameSecondname;
+	}
+	
+		}
+
+
 
 
 	
