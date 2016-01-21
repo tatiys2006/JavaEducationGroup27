@@ -1,12 +1,12 @@
 package com.example.tests;
 
-import static org.testng.Assert.assertEquals;
-
-import java.util.Collections;
-import java.util.List;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
 import java.util.Random;
 
 import org.testng.annotations.Test;
+
+import com.example.utils.SortedListOf;
 
 public class GroupModificationTest extends TestBase{
 
@@ -14,7 +14,7 @@ public class GroupModificationTest extends TestBase{
 	public void modifySomeGroup(GroupData group){
 				
 		//save old state
-		List<GroupData> oldList = app.getGroupHelper().getGroup();
+		SortedListOf<GroupData> oldList = app.getGroupHelper().getGroup();
 		
 		//создаем генератор случайных чисел для удаления случайной группы
 		Random rnd = new Random();
@@ -22,16 +22,11 @@ public class GroupModificationTest extends TestBase{
 						
 		//actions
 		app.getGroupHelper().modifyGroup(index, group);
-		
-		
+				
 		//save new state
-		List<GroupData> newList = app.getGroupHelper().getGroup();
+		SortedListOf<GroupData> newList = app.getGroupHelper().getGroup();
 						
 		//compare
-		oldList.remove(index);
-		oldList.add(group);
-		Collections.sort(oldList);
-		assertEquals(newList, oldList);
-	}
-
+		assertThat(newList, equalTo(oldList.without(index).withAdded(group)));
+		}
 }
