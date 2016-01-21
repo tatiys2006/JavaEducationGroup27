@@ -3,13 +3,14 @@ package com.example.tests;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 
 import com.example.fw.ApplicationManager;
+import static com.example.tests.GroupDataGenerator.generateRandomGroups;
+import static com.example.tests.GroupDataGenerator.generateRandomString;
 
 public class TestBase {
 
@@ -29,19 +30,17 @@ public class TestBase {
 	//options for generate random value to some fields for GROUP
 	@DataProvider
 	public Iterator<Object[]> randomValidGroupGenerator() {
-		List<Object[]> list = new ArrayList<Object[]>();
-		
-		//qty of groups, that will changed
-		for (int i = 0; i < 5; i++ ){
-			GroupData group = new GroupData()
-					.withGroupName(generateRandomString())
-					.withHeader(generateRandomString())
-					.withFooter(generateRandomString());
-				list.add(new Object[]{group});
-		}
-		return list.iterator();
+		return wrapGroupsForDataProvider(generateRandomGroups(5)).iterator();
 	}
 	
+	public static List<Object[]> wrapGroupsForDataProvider(List<GroupData> groups) {
+		List<Object[]> list = new ArrayList<Object[]>();
+		for (GroupData group : groups){
+			list.add(new Object[]{group});
+		}
+		return list;
+	}
+
 	//options for generate random value to some fields for CONTACT
 	@DataProvider
 	public Iterator<Object[]> randomValidContactGenerator() {
@@ -69,15 +68,4 @@ public class TestBase {
 		}
 		return list.iterator();
 	}
-	
-	public String generateRandomString(){
-		Random rnd = new Random();
-		//the 3rd field will empty
-		if (rnd.nextInt(3) == 0) {
-			return "";	
-		} else {
-			//add to text random value
-			return "test" + rnd.nextInt();
-		}
-	}
-	}
+}
