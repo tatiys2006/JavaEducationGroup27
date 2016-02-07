@@ -3,11 +3,11 @@ package com.example.tests;
 import static org.junit.Assert.assertThat;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Iterator;
 
-import static com.example.tests.GroupDataGenerator.loadGroupsFromCsvFile;
+//import static com.example.tests.GroupDataGenerator.loadGroupsFromCsvFile;
+import static com.example.tests.GroupDataGenerator.loadGroupsFromXmlFile;
 import static org.hamcrest.Matchers.*;
 
 import org.testng.annotations.DataProvider;
@@ -19,7 +19,8 @@ public class CreateGroup extends TestBase {
 	
 	@DataProvider
 	public Iterator<Object[]> groupsFromFile() throws IOException {
-		return wrapGroupsForDataProvider(loadGroupsFromCsvFile(new File("groups.txt"))).iterator();
+		//return wrapGroupsForDataProvider(loadGroupsFromCsvFile(new File("groups.txt"))).iterator();
+		return wrapGroupsForDataProvider(loadGroupsFromXmlFile(new File("groups.xml"))).iterator();
 	}
 	
 	

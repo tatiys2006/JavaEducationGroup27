@@ -23,7 +23,8 @@ public class GroupHelper extends HelperBase{
 	}	
 		
 	private void rebuildCache() {
-		SortedListOf<GroupData> cachedGroups = new SortedListOf<GroupData>();
+		//SortedListOf<GroupData> cachedGroups = new SortedListOf<GroupData>();
+		cachedGroups = new SortedListOf<GroupData>();
 		manager.navigateTo().groupPage();
 		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
 		for (WebElement checkbox : checkboxes) {
