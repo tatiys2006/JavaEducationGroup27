@@ -102,6 +102,7 @@ public class ContactData implements Comparable<ContactData> {
 
 	@Override
 	public int compareTo(ContactData other) {
+//		return this.firstname.toLowerCase().compareTo(other.firstname.toLowerCase());
 		return this.firstnameSecondname.toLowerCase().compareTo(other.firstnameSecondname.toLowerCase());
 			}
 	
@@ -113,6 +114,11 @@ public class ContactData implements Comparable<ContactData> {
 
 	public ContactData withSecondname(String secondname) {
 		this.secondname = secondname;
+		return this;
+	}
+	
+	public ContactData withFirstnameSecondname(String firstnameSecondname) {
+		this.firstnameSecondname = firstnameSecondname;
 		return this;
 	}
 

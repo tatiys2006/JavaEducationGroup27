@@ -21,10 +21,10 @@ public class ContactHelper extends HelperBase{
 	private SortedListOf<ContactData> cachedContacts;
 	
 	public SortedListOf<ContactData> getContact() {
-			if (cachedContacts == null){
-				rebuildCacheContact();
+			if (this.cachedContacts == null){
+				this.rebuildCacheContact();
 					} 
-			return cachedContacts;
+			return this.cachedContacts;
 				}
 	
 	private void rebuildCacheContact() {
@@ -33,10 +33,18 @@ public class ContactHelper extends HelperBase{
 		for (WebElement row : rows) {
 				String firstname = row.findElement(By.xpath(".//td[3]")).getText();
 				String secondname = row.findElement(By.xpath(".//td[2]")).getText();
-				this.controlOfData(new ContactData().withFirstname(firstname).withSecondname(secondname));
-				cachedContacts.add(new ContactData().withFirstname(firstname).withSecondname(secondname));
-				}
-			}
+					if (secondname == " "){
+						secondname = "";
+					}
+					if (firstname == " "){
+						firstname = "";
+					}
+				String firstnameSecondname = firstname + secondname;
+				this.controlOfData(new ContactData().withFirstname(firstname).withSecondname(secondname).withFirstnameSecondname(firstnameSecondname));
+				cachedContacts.add(new ContactData().withFirstname(firstname).withSecondname(secondname).withFirstnameSecondname(firstnameSecondname));
+		}
+		this.cachedContacts = cachedContacts;
+	}
 	
 	public ContactHelper createContact(ContactData contact) {
 		openCreateContactPage();
@@ -206,7 +214,7 @@ public class ContactHelper extends HelperBase{
 	public ContactHelper controlOfData(ContactData contact) {
 
 		if (contact.getSecondname() != null & contact.getFirstname() != null){
-			contact.setFirstnameSecondname(contact.getSecondname() + " " + contact.getFirstname());
+			contact.setFirstnameSecondname(contact.getFirstname() + contact.getSecondname());
 	
 		} else { if (contact.getSecondname() != null & contact.getFirstname() == null){
 			contact.setFirstnameSecondname(contact.getSecondname());

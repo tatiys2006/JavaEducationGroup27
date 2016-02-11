@@ -1,5 +1,8 @@
 package com.example.tests;
 
+import static com.example.tests.ContactDataGenerator.generateRandomContacts;
+import static com.example.tests.GroupDataGenerator.generateRandomGroups;
+
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -12,9 +15,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 
 import com.example.fw.ApplicationManager;
-import static com.example.tests.GroupDataGenerator.generateRandomGroups;
-import static com.example.tests.GroupDataGenerator.generateRandomString;
-
 public class TestBase {
 
 	
@@ -50,28 +50,14 @@ public class TestBase {
 	//options for generate random value to some fields for CONTACT
 	@DataProvider
 	public Iterator<Object[]> randomValidContactGenerator() {
+		return wrapContactsForContactProvider(generateRandomContacts(4)).iterator();
+	}
+
+	public static List<Object[]> wrapContactsForContactProvider(List<ContactData> contacts) {
 		List<Object[]> list = new ArrayList<Object[]>();
-		
-		//qty of contacts, that will changed
-		for (int i = 0; i < 4; i++ ){
-			ContactData contact = new ContactData()
-				.withFirstname(generateRandomString())
-				.withSecondname(generateRandomString())
-				.withMyAddress1("My address")
-				.withTelNumberHome("1")
-				.withTelNumberMobile("2")
-				.withTelNumberWork("3")
-				.withEmail1("t@test.com")
-				.withEmail2("t2@test.com")
-				.withBdayDay("2")
-				.withBdayMonth("February")
-				.withBdayYear("1900")
-				.withChoosedGroup("TakosGroup")
-				.withSecondaryAddress("secondary address")
-				.withSecondaryHome("Secondary home 4");
-			
+		for (ContactData contact : contacts) {
 			list.add(new Object[]{contact});
 		}
-		return list.iterator();
+		return list;
 	}
 }

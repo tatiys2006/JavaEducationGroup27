@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -104,7 +105,7 @@ public class GroupDataGenerator {
 			return "";	
 		} else {
 			//add to text random value
-			return "test" + rnd.nextInt();
+			return "test" + rnd.nextInt(16);
 		}
 	}
 }

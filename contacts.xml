@@ -1,0 +1,37 @@
+<list>
+  <contact>
+    <firstname>testContact11</firstname>
+    <secondname>testContact4</secondname>
+    <myAddress1>My address
+    test
+    test</myAddress1>
+    <telNumberHome>1</telNumberHome>
+    <telNumberMobile>2</telNumberMobile>
+    <telNumberWork>3</telNumberWork>
+    <email1>t@test.com</email1>
+    <email2>t2@test.com</email2>
+    <bdayDay>2</bdayDay>
+    <bdayMonth>February</bdayMonth>
+    <bdayYear>1900</bdayYear>
+    <choosedGroup>TakosGroup</choosedGroup>
+    <secondaryAddress>secondary address</secondaryAddress>
+    <secondaryHome>Secondary home 4</secondaryHome>
+  </contact>
+  <contact>
+    <firstname>testContact5</firstname>
+    <secondname></secondname>
+    <myAddress1>My address</myAddress1>
+    <telNumberHome>1</telNumberHome>
+    <telNumberMobile>2</telNumberMobile>
+    <telNumberWork>3</telNumberWork>
+    <email1>t@test.com</email1>
+    <email2>t2@test.com</email2>
+    <bdayDay>2</bdayDay>
+    <bdayMonth>February</bdayMonth>
+    <bdayYear>1900</bdayYear>
+    <choosedGroup>TakosGroup</choosedGroup>
+    <secondaryAddress>secondary address</secondaryAddress>
+    <secondaryHome>Secondary home 4</secondaryHome>
+  </contact>
+  
+</list>
